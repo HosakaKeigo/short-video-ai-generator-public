@@ -1,0 +1,151 @@
+[tool.poetry]
+name = "short-video-ai-generator-backend"
+version = "0.1.0"
+description = "AI-powered short video generator backend"
+authors = ["Hosaka Keigo"]
+readme = "README.md"
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.0"
+uvicorn = { extras = ["standard"], version = "^0.30.0" }
+pydantic = "^2.9.0"
+python-multipart = "^0.0.9"
+google-cloud-storage = "^3.2.0"
+google-genai = "^1.26.0"
+google-generativeai = "^0.8.5"
+python-dotenv = "^1.0.1"
+pydantic-settings = "^2.8.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.8.6"
+pre-commit = "^4.0.1"
+pytest = "^8.3.4"
+pytest-asyncio = "^0.25.2"
+
+[tool.ruff]
+# 基本設定
+line-length = 88
+target-version = "py312"
+
+# 除外するファイル/ディレクトリ
+exclude = [
+  ".git",
+  ".venv",
+  "__pycache__",
+  "build",
+  "dist",
+  "migrations",
+  ".mypy_cache",
+  ".pytest_cache",
+  ".tox",
+  "frontend",
+  "credentials",
+  "storage",
+]
+
+# インクルードするファイルパターン
+include = ["*.py", "*.pyi", "**/pyproject.toml"]
+
+[tool.ruff.lint]
+# 有効にするルールセット
+select = [
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings
+  "F",    # pyflakes
+  "I",    # isort
+  "B",    # flake8-bugbear
+  "C4",   # flake8-comprehensions
+  "UP",   # pyupgrade
+  "N",    # pep8-naming
+  "S",    # flake8-bandit (security)
+  "A",    # flake8-builtins
+  "DTZ",  # flake8-datetimez
+  "EM",   # flake8-errmsg
+  "G",    # flake8-logging-format
+  "INP",  # flake8-no-pep420
+  "PIE",  # flake8-pie
+  "T20",  # flake8-print
+  "PYI",  # flake8-pyi
+  "PT",   # flake8-pytest-style
+  "Q",    # flake8-quotes
+  "RSE",  # flake8-raise
+  "RET",  # flake8-return
+  "SLF",  # flake8-self
+  "SIM",  # flake8-simplify
+  "ARG",  # flake8-unused-arguments
+  "PTH",  # flake8-use-pathlib
+  "ERA",  # flake8-eradicate
+  "PGH",  # pygrep-hooks
+  "PL",   # Pylint
+  "TRY",  # tryceratops
+  "FLY",  # flynt
+  "PERF", # Perflint
+  "RUF",  # Ruff-specific rules
+]
+
+# 無視するルール
+ignore = [
+  "E501",    # 行の長さ（line-lengthで制御）
+  "B008",    # 関数呼び出しのデフォルト引数（FastAPIのDependsで必要）
+  "B904",    # raise ... from err を使用
+  "S101",    # assertの使用（テストでは必要）
+  "PLR0913", # 引数が多すぎる
+  "T20",     # print文（開発中は必要）
+  "G004",    # ログメッセージのフォーマット（開発中は必要）,
+  "RUF001",
+  "RUF003",
+]
+
+# ファイルごとの除外設定
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"] # 未使用インポート、スターインポート
+"tests/**/*.py" = [
+  "S101",    # assert使用OK
+  "S105",    # ハードコードされたパスワードOK（テスト用）
+  "PLR2004", # マジックナンバーOK
+]
+
+# isort設定
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+combine-as-imports = true
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+]
+
+# McCabe複雑度
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+# flake8-quotes設定
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "double"
+
+# pylint設定
+[tool.ruff.lint.pylint]
+max-args = 5
+max-branches = 12
+max-returns = 6
+max-statements = 50
+
+[tool.ruff.format]
+# フォーマット設定
+quote-style = "double"            # ダブルクォート優先
+indent-style = "space"            # スペースでインデント
+skip-magic-trailing-comma = false
+line-ending = "auto"              # LF or CRLF
+
+# docstring設定
+docstring-code-format = true
+docstring-code-line-length = 72
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

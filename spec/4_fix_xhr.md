@@ -1,0 +1,1 @@
+Fix xhr usage with native fetch API
