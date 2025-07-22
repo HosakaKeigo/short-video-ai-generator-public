@@ -1,6 +1,6 @@
 # AI Short Video Generator
 
-AIを活用して動画から自動的にハイライトを抽出し、短編動画を生成するWebアプリケーション
+AIを活用して動画から自動的にハイライトを抽出し、ショート動画を生成するWebアプリケーション
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg)
@@ -8,7 +8,7 @@ AIを活用して動画から自動的にハイライトを抽出し、短編動
 
 ## 🎬 概要
 
-このアプリケーションは、長い動画から自動的にハイライトシーンを検出し、30秒単位の短編動画を生成します。Google Gemini APIを使用した高度な動画解析により、最も興味深い部分を抽出します。
+このアプリケーションは、長い動画から自動的にハイライトシーンを検出し、30秒単位のショート動画を生成します。Google Gemini APIを使用した高度な動画解析により、最も興味深い部分を抽出します。
 
 ### 主な機能
 
@@ -222,12 +222,3 @@ docker run -p 8080:8080 --env-file .env video-ai-backend
 
 このプロジェクトはMITライセンスの下で公開されています。詳細は[LICENSE](LICENSE)ファイルを参照してください。
 
-## 🙏 謝辞
-
-- [Google Gemini](https://ai.google.dev/) - 動画解析AI
-- [FFmpeg](https://ffmpeg.org/) - 動画処理
-- [shadcn/ui](https://ui.shadcn.com/) - UIコンポーネント
-
-## 📞 お問い合わせ
-
-質問や提案がある場合は、[Issues](https://github.com/HosakaKeigo/short-video-ai-generator-public/issues)でお知らせください。
