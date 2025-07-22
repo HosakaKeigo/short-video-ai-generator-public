@@ -4,7 +4,7 @@ AIを活用して動画から自動的にハイライトを抽出し、ショー
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg)
-![Next.js](https://img.shields.io/badge/next.js-14-black.svg)
+![Next.js](https://img.shields.io/badge/next.js-15-black.svg)
 
 ## 🎬 概要
 
@@ -144,7 +144,7 @@ npm run dev
 ## 🛠️ 技術スタック
 
 ### フロントエンド
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **State Management**: Zustand
